@@ -9,10 +9,10 @@ public class Game {
 		b.printBoard();
 		while (!gameEnd){
 			//write the game logic
-		}		
+		}
 	}
-	
-	
+
+
 	public static void main (String args[]){
 		Game g  = new Game();
 	}

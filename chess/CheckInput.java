@@ -1,9 +1,14 @@
+
 package chess;
 
 public class CheckInput {
-	
-	
+
+
 	public boolean checkCoordinateValidity(String input){
-		return false;
+		if(input.matches("[12345678][abcdefgh]")){
+			return true;
+		}else{
+			return false;
+		}
 	}
 }
