@@ -8,6 +8,7 @@ public class King extends Piece{
 			this.setSymbol("♚");
 		}
 	}
+
 	public boolean isLegitMove(int x1, int y1, int x2, int y2){
 		return true;
 	}

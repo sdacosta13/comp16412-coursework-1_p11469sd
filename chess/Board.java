@@ -86,8 +86,9 @@ public class Board {
 
 	public boolean movePiece(int i0, int j0, int i1, int j1, Piece p){
 		if (p.isLegitMove(i0,j0,i1,j1)){
-			board[i0][j0].removePiece();
-			setPiece(i1, j1, p);
+			board[j0][i0].removePiece();
+			this.setPiece(i1, j1, p);
+			p.updateCoordinates(i1,j1);
 			return true;
 		} else {
 			return false;
@@ -99,11 +100,14 @@ public class Board {
 	}
 
 	public Piece getPiece(int iIn, int jIn){
-		return board[iIn][jIn].getPiece();
+		return board[jIn][iIn].getPiece();
 	}
 
+	public Square getSquareAt(int x, int y){
+		return board[y][x];
+	}
 	public boolean hasPiece(int i, int j){
-		if(board[i][j].hasPiece()){
+		if(board[j][i].hasPiece()){
 			return true;
 		} else {
 			return false;

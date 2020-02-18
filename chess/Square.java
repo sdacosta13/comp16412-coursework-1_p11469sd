@@ -25,7 +25,8 @@ public class Square {
 		hasPiece = true;
 	}
 	public void removePiece(){
-		hasPiece = false;
+		this.hasPiece = false;
+		this.p = null;
 	}
 	public int getI(){
 		return i;

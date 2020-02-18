@@ -28,8 +28,8 @@ public abstract class Piece {
     return colour;
   }
   public void updateCoordinates(int x, int y){
-    this.row = x;
-    this.column = y;
+    this.row = y;
+    this.column = x;
 
   }
   public abstract boolean isLegitMove(int x1, int y1, int x2, int y2);
