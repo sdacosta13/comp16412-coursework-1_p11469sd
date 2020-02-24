@@ -19,9 +19,10 @@ public class Pawn extends Piece{
 	}
 
 	public boolean isLegitMove(int x1, int y1, int x2, int y2){
+		Square[][] b = Board.getBoard();
 		if(colour == PieceColour.BLACK){
 			if((y2 > y1) && (x1 == x2)){
-				if (!b.getSquareAt(x2,y2).hasPiece()){
+				if (!b[y2][x2].hasPiece()){
 					if((y2 == (y1 + 2)) && this.firstMove){
 
 						this.firstMove = false;
@@ -37,8 +38,8 @@ public class Pawn extends Piece{
 				}
 
 			} else if(((x1+1==x2)&&(y1+1==y2))||((x1-1==x2)&&(y1+1==y2))){
-				if(b.getSquareAt(x2,y2).hasPiece()){
-					if(b.getPiece(x2,y2).getColour()==PieceColour.BLACK){
+				if(b[y2][x2].hasPiece()){
+					if(b[y2][x2].getPiece().getColour()==PieceColour.BLACK){
 						return false;
 					} else {
 						return true;

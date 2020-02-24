@@ -30,10 +30,10 @@ public class Game {
 
 
 				//check move validity
-				if (b.getSquareAt(origin[0],origin[1]).hasPiece()){
+				if (b.getSquareAt(origin[0],origin[1]).hasPiece() && !(dest == origin)){
 					Square squareAtCoord = b.getSquareAt(origin[0],origin[1]);
 					Piece pieceAtCoord = squareAtCoord.getPiece();
-					pieceAtCoord.giveBoard(b);
+
 					if (b.movePiece(origin[0],origin[1],dest[0],dest[1],pieceAtCoord)){
 						b.printBoard();
 

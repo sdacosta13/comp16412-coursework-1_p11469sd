@@ -11,7 +11,7 @@ public class Knight extends Piece{
   }
 
   public boolean isLegitMove(int x1, int y1, int x2, int y2){
-
+    Square[][] b = Board.getBoard();
     int [] dest = {x2,y2};
     int[][] moves = {{x1-2,y1-1},
     {x1-2,y1+1},
@@ -28,8 +28,8 @@ public class Knight extends Piece{
         valid = true;
       }
     }
-    if(b.getSquareAt(dest[0],dest[1]).hasPiece()){
-      if(b.getPiece(dest[0],dest[1]).getColour() == this.colour){
+    if(b[dest[1]][dest[0]].hasPiece()){
+      if(b[dest[1]][dest[0]].getPiece().getColour() == this.colour){
         valid = false;
       }
     }
