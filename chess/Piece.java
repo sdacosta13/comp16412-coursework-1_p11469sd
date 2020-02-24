@@ -5,9 +5,12 @@ public abstract class Piece {
   private int column;
   private String symbol;
   protected PieceColour colour;
-
+  public Board b;
   public Piece(){
     this.colour = colour;
+  }
+  public void giveBoard(Board updatedB){
+    this.b = updatedB;
   }
   public String getSymbol(){
 

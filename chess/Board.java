@@ -86,6 +86,7 @@ public class Board {
 
 	public boolean movePiece(int i0, int j0, int i1, int j1, Piece p){
 		if (p.isLegitMove(i0,j0,i1,j1)){
+			
 			board[j0][i0].removePiece();
 			this.setPiece(i1, j1, p);
 			p.updateCoordinates(i1,j1);

@@ -24,29 +24,29 @@ public class Game {
 						dest = this.convertToIndex(in);
 						break;
 					} else {
-						System.out.println("Invalid move");
+						System.out.println("--------------------------\nInvalid move");
 					}
 				}
-				System.out.println(origin[0]+ " " + origin[1]);
-				System.out.println(dest[0] + " " + dest[1]);
+
+
 				//check move validity
 				if (b.getSquareAt(origin[0],origin[1]).hasPiece()){
 					Square squareAtCoord = b.getSquareAt(origin[0],origin[1]);
 					Piece pieceAtCoord = squareAtCoord.getPiece();
-
+					pieceAtCoord.giveBoard(b);
 					if (b.movePiece(origin[0],origin[1],dest[0],dest[1],pieceAtCoord)){
 						b.printBoard();
 
 					} else {
-						System.out.println("Invalid move");
+						System.out.println("--------------------------\nInvalid move");
 						b.printBoard();
 					}
 				} else{
-					System.out.println("Invalid move");
+					System.out.println("--------------------------\nInvalid move");
 				}
 
 			} else {
-				System.out.println("Invalid move");
+				System.out.println("--------------------------\nInvalid move");
 			}
 
 		}
