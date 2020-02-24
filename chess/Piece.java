@@ -64,9 +64,10 @@ public abstract class Piece {
     } else {
       return false;
     }
-    for(int i = 0; i < Math.abs(xDif); i++){
+    for(int i = 1; i < Math.abs(xDif); i++){
       testposX = x1 + unitX*i;
       testposY = y1 + unitY*i;
+      System.out.println(testposX + " " + testposY);
       if (b[testposY][testposX].hasPiece()){
         valid = false;
       }
