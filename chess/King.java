@@ -2,6 +2,7 @@ package chess;
 
 public class King extends Piece{
 	public King(PieceColour color){
+		this.colour = color;
 		if(color == PieceColour.WHITE){
 			this.setSymbol("♔");
 		} else {

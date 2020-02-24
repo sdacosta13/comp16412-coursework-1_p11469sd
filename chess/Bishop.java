@@ -2,6 +2,7 @@ package chess;
 
 public class Bishop extends Piece{
   public Bishop(PieceColour color){
+    this.colour = color;
     if(color == PieceColour.WHITE){
 			this.setSymbol("♗");
 		} else {

@@ -2,6 +2,7 @@ package chess;
 
 public class Rook extends Piece{
   public Rook(PieceColour color){
+    this.colour = color;
 
     if(color == PieceColour.WHITE){
 

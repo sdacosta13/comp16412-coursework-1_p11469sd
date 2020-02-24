@@ -3,7 +3,6 @@ import java.io.Console;
 
 public class Game {
 	private static boolean gameEnd=false;
-
 	public Game(){
 		Board b = new Board();
 		b.initialisePieces();
@@ -35,12 +34,12 @@ public class Game {
 					Square squareAtCoord = b.getSquareAt(origin[0],origin[1]);
 					Piece pieceAtCoord = squareAtCoord.getPiece();
 
-					if (pieceAtCoord.isLegitMove(origin[0],origin[1],dest[0],dest[1])){
-						b.movePiece(origin[0],origin[0],dest[0],dest[1],pieceAtCoord);
+					if (b.movePiece(origin[0],origin[1],dest[0],dest[1],pieceAtCoord)){
 						b.printBoard();
 
 					} else {
 						System.out.println("Invalid move");
+						b.printBoard();
 					}
 				} else{
 					System.out.println("Invalid move");

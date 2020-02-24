@@ -5,6 +5,7 @@ public abstract class Piece {
   private int column;
   private String symbol;
   protected PieceColour colour;
+
   public Piece(){
     this.colour = colour;
   }
@@ -32,6 +33,7 @@ public abstract class Piece {
     this.column = x;
 
   }
+
   public abstract boolean isLegitMove(int x1, int y1, int x2, int y2);
 
 }
