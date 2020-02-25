@@ -19,12 +19,13 @@ public class Pawn extends Piece{
 	}
 
 	public boolean isLegitMove(int x1, int y1, int x2, int y2){
+
 		Square[][] b = Board.getBoard();
 		if(colour == PieceColour.BLACK){
 			if((y2 > y1) && (x1 == x2)){
-				if (!b[y2][x2].hasPiece()){
+				if (!b[x2][y2].hasPiece()){
 					if((y2 == (y1 + 2)) && this.firstMove){
-						if(!(b[y1+1][x1]).hasPiece()){
+						if(!(b[x1][y1+1]).hasPiece()){
 							this.firstMove = false;
 							return true;
 						} else {
@@ -41,8 +42,8 @@ public class Pawn extends Piece{
 				}
 
 			} else if(((x1+1==x2)&&(y1+1==y2))||((x1-1==x2)&&(y1+1==y2))){
-				if(b[y2][x2].hasPiece()){
-					if(b[y2][x2].getPiece().getColour()==PieceColour.BLACK){
+				if(b[x2][y2].hasPiece()){
+					if(b[x2][y2].getPiece().getColour()==PieceColour.BLACK){
 						return false;
 					} else {
 						return true;
@@ -57,9 +58,9 @@ public class Pawn extends Piece{
 
 		} else {
 			if((y2 < y1) && (x1 == x2)){
-				if (!b[y2][x2].hasPiece()){
+				if (!b[x2][y2].hasPiece()){
 					if((y2 == (y1 - 2)) && this.firstMove){
-						if(!(b[y1-1][x1]).hasPiece()){
+						if(!(b[x1][y1-1]).hasPiece()){
 							this.firstMove = false;
 							return true;
 						} else {
@@ -76,8 +77,8 @@ public class Pawn extends Piece{
 				}
 
 			} else if(((x1-1==x2)&&(y1-1==y2))||((x1+1==x2)&&(y1-1==y2))){
-				if(b[y2][x2].hasPiece()){
-					if(b[y2][x2].getPiece().getColour()==PieceColour.WHITE){
+				if(b[x2][y2].hasPiece()){
+					if(b[x2][y2].getPiece().getColour()==PieceColour.WHITE){
 						return false;
 					} else {
 						return true;

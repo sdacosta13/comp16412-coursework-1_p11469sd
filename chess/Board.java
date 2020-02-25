@@ -9,7 +9,7 @@ public class Board {
 	public Board(){
 		for (int i=0; i<board[0].length; i++){
 			for (int j=0; j<board[1].length; j++){
-				board[i][j]=new Square(i,j);
+				board[j][i]=new Square(i,j);
 			}
 		}
 	}
@@ -30,27 +30,27 @@ public class Board {
 				row = 7;
 			}
 			Rook rook = new Rook(cType);
-			this.setPiece(0, row, rook);
+			this.setPiece(row, 0, rook);
 			Knight knight = new Knight(cType);
-			this.setPiece(1, row, knight);
+			this.setPiece(row, 1, knight);
 			Bishop bishop = new Bishop(cType);
-			this.setPiece(2, row, bishop);
+			this.setPiece(row, 2, bishop);
 			Queen queen = new Queen(cType);
-			this.setPiece(3, row, queen);
+			this.setPiece(row, 3, queen);
 			King king = new King(cType);
-			this.setPiece(4, row, king);
+			this.setPiece(row, 4, king);
 			bishop = new Bishop(cType);
-			this.setPiece(5, row, bishop);
+			this.setPiece(row, 5, bishop);
 			knight = new Knight(cType);
-			this.setPiece(6, row, knight);
+			this.setPiece(row, 6, knight);
 			rook = new Rook(cType);
-			this.setPiece(7, row, rook);
+			this.setPiece(row, 7, rook);
 			for(int j = 0; j < 8; j++){
 				Pawn pawn = new Pawn(cType);
 				if(i == 0){
-					this.setPiece(j, 1, pawn);
+					this.setPiece(1, j, pawn);
 				} else {
-					this.setPiece(j, 6, pawn);
+					this.setPiece(6, j, pawn);
 				}
 			}
 		}
@@ -86,8 +86,8 @@ public class Board {
 
 	public boolean movePiece(int i0, int j0, int i1, int j1, Piece p){
 		if (p.isLegitMove(i0,j0,i1,j1)){
-			
-			board[j0][i0].removePiece();
+
+			board[i0][j0].removePiece();
 			this.setPiece(i1, j1, p);
 			p.updateCoordinates(i1,j1);
 			return true;
@@ -97,18 +97,18 @@ public class Board {
 	}
 
 	public void setPiece(int iIn, int jIn, Piece p){
-		board[jIn][iIn].setPiece(p);
+		board[iIn][jIn].setPiece(p);
 	}
 
 	public Piece getPiece(int iIn, int jIn){
-		return board[jIn][iIn].getPiece();
+		return board[iIn][jIn].getPiece();
 	}
 
 	public Square getSquareAt(int x, int y){
-		return board[y][x];
+		return board[x][y];
 	}
 	public boolean hasPiece(int i, int j){
-		if(board[j][i].hasPiece()){
+		if(board[i][j].hasPiece()){
 			return true;
 		} else {
 			return false;

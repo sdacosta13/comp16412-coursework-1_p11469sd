@@ -28,8 +28,8 @@ public class Knight extends Piece{
         valid = true;
       }
     }
-    if(b[dest[1]][dest[0]].hasPiece()){
-      if(b[dest[1]][dest[0]].getPiece().getColour() == this.colour){
+    if(b[dest[0]][dest[1]].hasPiece()){
+      if(b[dest[0]][dest[1]].getPiece().getColour() == this.colour){
         valid = false;
       }
     }
