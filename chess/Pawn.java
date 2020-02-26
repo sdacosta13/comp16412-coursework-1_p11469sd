@@ -11,28 +11,29 @@ public class Pawn extends Piece{
 			this.setSymbol("♟");
 		}
 	}
-	public void setFirstMove(boolean newBool){
-		this.firstMove = newBool;
+	public void setFirstMove(boolean bool){
+		this.firstMove = bool;
 	}
-	public boolean getFirstMove(){
+	public Boolean getFirstMove(){
 		return this.firstMove;
 	}
-
 	public boolean isLegitMove(int x1, int y1, int x2, int y2){
-
-
 		Square[][] b = Board.getBoard();
 		int yDif = Math.abs(y2-y1);
 		int xDif = Math.abs(x2-x1);
+		System.out.println(xDif);
+		System.out.println(yDif);
+
 		if(this.colour == PieceColour.BLACK){
-			if(y2 > y1){
-				if( yDif == 2 && this.getFirstMove() && xDif == 0 && !b[y2][x2].hasPiece() && !b[y2-1][x2].hasPiece()){
+			if(x2 > x1){
+				if( xDif == 2 && x1 == 1 && yDif == 0 && !b[x2][y2].hasPiece() && !b[x2-1][y2].hasPiece()){
 					this.setFirstMove(false);
+					System.out.println("rnu2");
 					return true;
-				} else if (yDif == 1 && xDif == 0 && !b[y2][x2].hasPiece()) {
+				} else if (xDif == 1 && yDif == 0 && !b[x2][y2].hasPiece()) {
 					return true;
-				} else if (yDif == 1 && xDif == 1 && b[y2][x2].hasPiece()) {
-					if (b[y2][x2].getPiece().colour != this.colour){
+				} else if (xDif == 1 && yDif == 1 && b[x2][y2].hasPiece()) {
+					if (b[x2][y2].getPiece().colour != this.colour){
 						return true;
 					} else {
 						return false;
@@ -46,14 +47,15 @@ public class Pawn extends Piece{
 				return false;
 			}
 		} else {
-			if(y1 > y2){
-				if( yDif == 2 && this.getFirstMove() && xDif == 0 && !b[y2][x2].hasPiece()&& !b[y2+1][x2].hasPiece()){
+			if(x1 > x2){
+				if( xDif == 2 && x1 == 6 && yDif == 0 && !b[x2][y2].hasPiece() && !b[x2+1][y2].hasPiece()){
 					this.setFirstMove(false);
+					System.out.println("rnu");
 					return true;
-				} else if (yDif == 1 && xDif == 0 && !b[y2][x2].hasPiece()) {
+				} else if (xDif == 1 && yDif == 0 && !b[x2][y2].hasPiece()) {
 					return true;
-				} else if (yDif == 1 && xDif == 1 && b[y2][x2].hasPiece()) {
-					if (b[y2][x2].getPiece().colour != this.colour){
+				} else if (xDif == 1 && yDif == 1 && b[x2][y2].hasPiece()) {
+					if (b[x2][y2].getPiece().colour != this.colour){
 						return true;
 					} else {
 						return false;

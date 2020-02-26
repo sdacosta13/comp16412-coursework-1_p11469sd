@@ -1,30 +1,18 @@
 package chess;
-import java.lang.Math;
+
 public abstract class Piece {
   private int row;
   private int column;
   private String symbol;
   protected PieceColour colour;
-
   public Piece(){
-    this.colour = colour;
+
   }
-
   public String getSymbol(){
-
-    return symbol;
+    return this.symbol;
   }
   public void setSymbol(String str){
-    //PieceColour returnColour;
     this.symbol = str;
-
-    // int newInt = "♔♕♖♗♘♙".contains(symbol) ? 1:0;
-    // if( newInt == -1){
-    //   returnColour = PieceColour.BLACK;
-    // } else {
-    //   returnColour = PieceColour.WHITE;
-    // }
-    // colour = returnColour;
   }
   public PieceColour getColour(){
     return colour;
@@ -32,7 +20,6 @@ public abstract class Piece {
   public void updateCoordinates(int x, int y){
     this.row = y;
     this.column = x;
-
   }
   public boolean isGoingDiagonal(int x1, int y1, int x2, int y2){
     Square[][] b = Board.getBoard();
@@ -67,8 +54,8 @@ public abstract class Piece {
     for(int i = 1; i < Math.abs(xDif); i++){
       testposX = x1 + unitX*i;
       testposY = y1 + unitY*i;
-
-      if (b[testposY][testposX].hasPiece()){
+      System.out.println(testposX + " " + testposY);
+      if (b[testposX][testposY].hasPiece()){
         valid = false;
       }
     }
@@ -88,7 +75,7 @@ public abstract class Piece {
           testpos = y1 - i;
         }
 
-        if(b[testpos][x1].hasPiece()){
+        if(b[x1][testpos].hasPiece()){
           valid = false;
         }
       }
@@ -101,7 +88,7 @@ public abstract class Piece {
           testpos = x1 - i;
         }
 
-        if(b[y1][testpos].hasPiece()){
+        if(b[testpos][y1].hasPiece()){
           valid = false;
         }
       }
@@ -110,7 +97,5 @@ public abstract class Piece {
       return false;
     }
   }
-
   public abstract boolean isLegitMove(int x1, int y1, int x2, int y2);
-
 }
