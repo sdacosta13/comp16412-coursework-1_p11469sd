@@ -20,74 +20,50 @@ public class Pawn extends Piece{
 
 	public boolean isLegitMove(int x1, int y1, int x2, int y2){
 
+
 		Square[][] b = Board.getBoard();
-		if(colour == PieceColour.BLACK){
-			if((y2 > y1) && (x1 == x2)){
-				if (!b[x2][y2].hasPiece()){
-					if((y2 == (y1 + 2)) && this.firstMove){
-						if(!(b[x1][y1+1]).hasPiece()){
-							this.firstMove = false;
-							return true;
-						} else {
-							return false;
-						}
-					} else if (y2 == y1 + 1){
-						this.firstMove = false;
+		int yDif = Math.abs(y2-y1);
+		int xDif = Math.abs(x2-x1);
+		if(this.colour == PieceColour.BLACK){
+			if(y2 > y1){
+				if( yDif == 2 && this.getFirstMove() && xDif == 0 && !b[x2][y2].hasPiece() && !b[x2][y2-1].hasPiece()){
+					this.setFirstMove(false);
+					return true;
+				} else if (yDif == 1 && xDif == 0 && !b[x2][y2].hasPiece()) {
+					return true;
+				} else if (yDif == 1 && xDif == 1 && b[x2][y2].hasPiece()) {
+					if (b[x2][y2].getPiece().colour != this.colour){
 						return true;
 					} else {
 						return false;
 					}
 				} else {
-					return false;
-				}
-
-			} else if(((x1+1==x2)&&(y1+1==y2))||((x1-1==x2)&&(y1+1==y2))){
-				if(b[x2][y2].hasPiece()){
-					if(b[x2][y2].getPiece().getColour()==PieceColour.BLACK){
-						return false;
-					} else {
-						return true;
-					}
-
-				} else {
+					System.out.println("moved too far");
 					return false;
 				}
 			} else {
+				System.out.println("WrongDir");
 				return false;
 			}
-
 		} else {
-			if((y2 < y1) && (x1 == x2)){
-				if (!b[x2][y2].hasPiece()){
-					if((y2 == (y1 - 2)) && this.firstMove){
-						if(!(b[x1][y1-1]).hasPiece()){
-							this.firstMove = false;
-							return true;
-						} else {
-							return false;
-						}
-					} else if (y2 == y1 - 1){
-						this.firstMove = false;
+			if(y1 > y2){
+				if( yDif == 2 && this.getFirstMove() && xDif == 0 && !b[x2][y2].hasPiece()&& !b[x2][y2-1].hasPiece()){
+					this.setFirstMove(false);
+					return true;
+				} else if (yDif == 1 && xDif == 0 && !b[x2][y2].hasPiece()) {
+					return true;
+				} else if (yDif == 1 && xDif == 1 && b[x2][y2].hasPiece()) {
+					if (b[x2][y2].getPiece().colour != this.colour){
 						return true;
 					} else {
 						return false;
 					}
 				} else {
-					return false;
-				}
-
-			} else if(((x1-1==x2)&&(y1-1==y2))||((x1+1==x2)&&(y1-1==y2))){
-				if(b[x2][y2].hasPiece()){
-					if(b[x2][y2].getPiece().getColour()==PieceColour.WHITE){
-						return false;
-					} else {
-						return true;
-					}
-
-				} else {
+					System.out.println("moved too far");
 					return false;
 				}
 			} else {
+				System.out.println("WrongDir");
 				return false;
 			}
 		}

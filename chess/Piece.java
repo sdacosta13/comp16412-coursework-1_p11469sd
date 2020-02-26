@@ -67,8 +67,8 @@ public abstract class Piece {
     for(int i = 1; i < Math.abs(xDif); i++){
       testposX = x1 + unitX*i;
       testposY = y1 + unitY*i;
-      System.out.println(testposX + " " + testposY);
-      if (b[testposX][testposY].hasPiece()){
+
+      if (b[testposY][testposX].hasPiece()){
         valid = false;
       }
     }
@@ -88,11 +88,10 @@ public abstract class Piece {
           testpos = y1 - i;
         }
 
-        if(b[x1][testpos].hasPiece()){
+        if(b[testpos][x1].hasPiece()){
           valid = false;
         }
       }
-
       return valid;
     } else if (yDif == 0){
       for(int i = 1; i < Math.abs(xDif); i++){
@@ -102,14 +101,12 @@ public abstract class Piece {
           testpos = x1 - i;
         }
 
-        if(b[testpos][y1].hasPiece()){
+        if(b[y1][testpos].hasPiece()){
           valid = false;
         }
       }
-
       return valid;
     } else {
-
       return false;
     }
   }
