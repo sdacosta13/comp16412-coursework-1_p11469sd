@@ -18,18 +18,18 @@ public class Rook extends Piece{
 
       if(b[x2][y2].hasPiece()){
         if(b[x2][y2].getPiece().getColour() != this.colour){
-          System.out.println("run1");
+
           return true;
         } else {
-          System.out.println("run2");
+
           return false;
         }
       } else {
-        System.out.println("run3");
+
         return true;
       }
     } else {
-      System.out.println("run4");
+
       return false;
     }
   }

@@ -21,14 +21,13 @@ public class Pawn extends Piece{
 		Square[][] b = Board.getBoard();
 		int yDif = Math.abs(y2-y1);
 		int xDif = Math.abs(x2-x1);
-		System.out.println(xDif);
-		System.out.println(yDif);
+
 
 		if(this.colour == PieceColour.BLACK){
 			if(x2 > x1){
 				if( xDif == 2 && x1 == 1 && yDif == 0 && !b[x2][y2].hasPiece() && !b[x2-1][y2].hasPiece()){
 					this.setFirstMove(false);
-					System.out.println("rnu2");
+
 					return true;
 				} else if (xDif == 1 && yDif == 0 && !b[x2][y2].hasPiece()) {
 					return true;
@@ -39,18 +38,18 @@ public class Pawn extends Piece{
 						return false;
 					}
 				} else {
-					System.out.println("moved too far");
+
 					return false;
 				}
 			} else {
-				System.out.println("WrongDir");
+
 				return false;
 			}
 		} else {
 			if(x1 > x2){
 				if( xDif == 2 && x1 == 6 && yDif == 0 && !b[x2][y2].hasPiece() && !b[x2+1][y2].hasPiece()){
 					this.setFirstMove(false);
-					System.out.println("rnu");
+
 					return true;
 				} else if (xDif == 1 && yDif == 0 && !b[x2][y2].hasPiece()) {
 					return true;
@@ -61,11 +60,11 @@ public class Pawn extends Piece{
 						return false;
 					}
 				} else {
-					System.out.println("moved too far");
+
 					return false;
 				}
 			} else {
-				System.out.println("WrongDir");
+
 				return false;
 			}
 		}

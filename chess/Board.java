@@ -18,7 +18,7 @@ public class Board {
 	}
 
 	public void initialisePieces(){
-		/*
+
 		PieceColour cType;
 		int row;
 		for(int i = 0; i < 2; i++){
@@ -53,7 +53,7 @@ public class Board {
 					this.setPiece(6,j, pawn);
 				}
 			}
-		}*/;
+		}
 	}
 
 	public void printBoard(){

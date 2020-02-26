@@ -7,55 +7,21 @@ public class Game {
 		CheckInput checker = new CheckInput();
 		Board b = new Board();
 		b.initialisePieces();
-		//Black pieces
-		b.setPiece(0,0,new Rook(PieceColour.BLACK));
-		b.setPiece(0,1,new Knight(PieceColour.BLACK));
-		b.setPiece(2,0,new Bishop(PieceColour.BLACK));
-		b.setPiece(0,3,new Queen(PieceColour.BLACK));
-		b.setPiece(0,4,new King(PieceColour.BLACK));
-		b.setPiece(0,5,new Bishop(PieceColour.BLACK));
-		b.setPiece(0,6,new Knight(PieceColour.BLACK));
-		b.setPiece(0,7,new Rook(PieceColour.BLACK));
-		b.setPiece(1,0,new Pawn(PieceColour.BLACK));
-		b.setPiece(1,1,new Pawn(PieceColour.BLACK));
-		b.setPiece(1,2,new Pawn(PieceColour.BLACK));
-		b.setPiece(3,3,new Pawn(PieceColour.BLACK));
-		b.setPiece(1,4,new Pawn(PieceColour.BLACK));
-		b.setPiece(1,5,new Pawn(PieceColour.BLACK));
-		b.setPiece(1,6,new Pawn(PieceColour.BLACK));
-		b.setPiece(1,7,new Pawn(PieceColour.BLACK));
-
-		//White pieces
-		b.setPiece(6,0,new Pawn(PieceColour.WHITE));
-		b.setPiece(6,1,new Pawn(PieceColour.WHITE));
-		b.setPiece(6,2,new Pawn(PieceColour.WHITE));
-		b.setPiece(4,3,new Pawn(PieceColour.WHITE));
-		b.setPiece(4,4,new Pawn(PieceColour.WHITE));
-		b.setPiece(6,5,new Pawn(PieceColour.WHITE));
-		b.setPiece(6,6,new Pawn(PieceColour.WHITE));
-		b.setPiece(6,7,new Pawn(PieceColour.WHITE));
-		b.setPiece(7,0,new Rook(PieceColour.WHITE));
-		b.setPiece(7,1,new Knight(PieceColour.WHITE));
-		b.setPiece(2,7,new Bishop(PieceColour.WHITE));
-		b.setPiece(7,3,new Queen(PieceColour.WHITE));
-		b.setPiece(7,4,new King(PieceColour.WHITE));
-		b.setPiece(7,5,new Bishop(PieceColour.WHITE));
-		b.setPiece(7,6,new Knight(PieceColour.WHITE));
-		b.setPiece(7,7,new Rook(PieceColour.WHITE));
 		b.printBoard();
 		while (!gameEnd){
 
 			//write the game logic
 			Console console = System.console();
 			String in;
-			int playerMove;
+			String playerMove = "White";
+			PieceColour playerColour = PieceColour.WHITE;
 			int[] origin;
 			int[] dest;
-			in = console.readLine("------ Whites move -------\n> Enter origin:\n");
+			in = console.readLine("------ " + playerMove + " move -------\n> Enter origin:\n");
 			if (checker.checkCoordinateValidity(in)){
 				origin = this.convertToIndex(in);
 				while (true){
-					in = console.readLine("------ Whites move -------\n> Enter destination:\n");
+					in = console.readLine("------ " + playerMove + " move -------\n> Enter destination:\n");
 					if (checker.checkCoordinateValidity(in)){
 						dest = this.convertToIndex(in);
 						break;
@@ -69,13 +35,25 @@ public class Game {
 				if (b.getSquareAt(origin[0],origin[1]).hasPiece() && !(dest == origin)){
 					Square squareAtCoord = b.getSquareAt(origin[0],origin[1]);
 					Piece pieceAtCoord = squareAtCoord.getPiece();
+					if(pieceAtCoord.getColour() == playerColour){
+						if (b.movePiece(origin[0],origin[1],dest[0],dest[1],pieceAtCoord)){
+							gameEnd = true;
+							System.out.println(playerMove + " Wins!");
 
-					if (b.movePiece(origin[0],origin[1],dest[0],dest[1],pieceAtCoord)){
-						break;
-
+						} else {
+							if(playerMove == "White"){
+								playerMove = "Black";
+								playerColour = PieceColour.BLACK;
+							} else {
+								playerMove = "White";
+								playerColour = PieceColour.WHITE;
+							}
+							b.printBoard();
+						}
 					} else {
-						b.printBoard();
+						System.out.println("--------------------------\nInvalid move");
 					}
+
 				} else{
 					System.out.println("--------------------------\nInvalid move");
 				}
