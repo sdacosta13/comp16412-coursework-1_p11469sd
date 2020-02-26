@@ -54,8 +54,8 @@ public class Board {
 		this.setPiece(7,5,new Bishop(PieceColour.WHITE));
 		this.setPiece(7,6,new Knight(PieceColour.WHITE));
 		this.setPiece(7,7,new Rook(PieceColour.WHITE));
-		*/
 
+		*/
 		PieceColour cType;
 		int row;
 		for(int i = 0; i < 2; i++){
@@ -85,9 +85,9 @@ public class Board {
 			for(int j = 0; j < 8; j++){
 				Pawn pawn = new Pawn(cType);
 				if(i == 0){
-					this.setPiece(j, 1, pawn);
+					this.setPiece(j,1, pawn);
 				} else {
-					this.setPiece(j, 6, pawn);
+					this.setPiece(j,6, pawn);
 				}
 			}
 		}
@@ -101,14 +101,14 @@ public class Board {
 		for (int i=0; i<board[0].length; i++){
 			int row=i+1;
 			for (int j=0; j<board[1].length; j++){
-				if ((j==0) && board[j][i].hasPiece()){
+				if ((j==0) && board[i][j].hasPiece()){
 					System.out.print(row+" ");
-					System.out.print(board[j][i].getPiece().getSymbol());
-				} else if ((j==0) && !board[j][i].hasPiece()){
+					System.out.print(board[i][j].getPiece().getSymbol());
+				} else if ((j==0) && !board[i][j].hasPiece()){
 					System.out.print(row+"  " );
-				} else if (board[j][i].hasPiece()){
+				} else if (board[i][j].hasPiece()){
 					System.out.print("|");
-					System.out.print(board[j][i].getPiece().getSymbol());
+					System.out.print(board[i][j].getPiece().getSymbol());
 				} else {
 					System.out.print("| ");
 				}
@@ -125,7 +125,7 @@ public class Board {
 		System.out.println(((Object)p).getClass());
 		if (p.isLegitMove(i0,j0,i1,j1)){
 
-			board[i0][j0].removePiece();
+			board[j0][i0].removePiece();
 			this.setPiece(i1, j1, p);
 			p.updateCoordinates(i1,j1);
 			return true;
@@ -135,18 +135,18 @@ public class Board {
 	}
 
 	public void setPiece(int iIn, int jIn, Piece p){
-		board[iIn][jIn].setPiece(p);
+		board[jIn][iIn].setPiece(p);
 	}
 
 	public Piece getPiece(int iIn, int jIn){
-		return board[iIn][jIn].getPiece();
+		return board[jIn][iIn].getPiece();
 	}
 
 	public Square getSquareAt(int x, int y){
-		return board[x][y];
+		return board[y][x];
 	}
 	public boolean hasPiece(int i, int j){
-		if(board[i][j].hasPiece()){
+		if(board[j][i].hasPiece()){
 			return true;
 		} else {
 			return false;

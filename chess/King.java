@@ -17,10 +17,10 @@ public class King extends Piece{
 		int xDif = Math.abs(x1-x2);
 		int yDif = Math.abs(y1-y2);
 		if((xDif == 1 || xDif == 0) && (yDif == 1 || yDif == 0)){
-			if(!b[x2][y2].hasPiece()){
+			if(!b[y2][x2].hasPiece()){
 				return true;
 			} else {
-				if(b[x2][y2].getPiece().getColour() == this.colour){
+				if(b[y2][x2].getPiece().getColour() == this.colour){
 					return false;
 				} else {
 					return true;

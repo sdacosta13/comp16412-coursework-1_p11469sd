@@ -26,13 +26,13 @@ public class Pawn extends Piece{
 		int xDif = Math.abs(x2-x1);
 		if(this.colour == PieceColour.BLACK){
 			if(y2 > y1){
-				if( yDif == 2 && this.getFirstMove() && xDif == 0 && !b[x2][y2].hasPiece() && !b[x2][y2-1].hasPiece()){
+				if( yDif == 2 && this.getFirstMove() && xDif == 0 && !b[y2][x2].hasPiece() && !b[y2-1][x2].hasPiece()){
 					this.setFirstMove(false);
 					return true;
-				} else if (yDif == 1 && xDif == 0 && !b[x2][y2].hasPiece()) {
+				} else if (yDif == 1 && xDif == 0 && !b[y2][x2].hasPiece()) {
 					return true;
-				} else if (yDif == 1 && xDif == 1 && b[x2][y2].hasPiece()) {
-					if (b[x2][y2].getPiece().colour != this.colour){
+				} else if (yDif == 1 && xDif == 1 && b[y2][x2].hasPiece()) {
+					if (b[y2][x2].getPiece().colour != this.colour){
 						return true;
 					} else {
 						return false;
@@ -47,13 +47,13 @@ public class Pawn extends Piece{
 			}
 		} else {
 			if(y1 > y2){
-				if( yDif == 2 && this.getFirstMove() && xDif == 0 && !b[x2][y2].hasPiece()&& !b[x2][y2-1].hasPiece()){
+				if( yDif == 2 && this.getFirstMove() && xDif == 0 && !b[y2][x2].hasPiece()&& !b[y2+1][x2].hasPiece()){
 					this.setFirstMove(false);
 					return true;
-				} else if (yDif == 1 && xDif == 0 && !b[x2][y2].hasPiece()) {
+				} else if (yDif == 1 && xDif == 0 && !b[y2][x2].hasPiece()) {
 					return true;
-				} else if (yDif == 1 && xDif == 1 && b[x2][y2].hasPiece()) {
-					if (b[x2][y2].getPiece().colour != this.colour){
+				} else if (yDif == 1 && xDif == 1 && b[y2][x2].hasPiece()) {
+					if (b[y2][x2].getPiece().colour != this.colour){
 						return true;
 					} else {
 						return false;
