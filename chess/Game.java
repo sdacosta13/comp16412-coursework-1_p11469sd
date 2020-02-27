@@ -8,13 +8,14 @@ public class Game {
 		Board b = new Board();
 		b.initialisePieces();
 		b.printBoard();
+		String playerMove = "White";
+		PieceColour playerColour = PieceColour.WHITE;
 		while (!gameEnd){
 
 			//write the game logic
 			Console console = System.console();
 			String in;
-			String playerMove = "White";
-			PieceColour playerColour = PieceColour.WHITE;
+
 			int[] origin;
 			int[] dest;
 			in = console.readLine("------ " + playerMove + " move -------\n> Enter origin:\n");
@@ -41,10 +42,13 @@ public class Game {
 							System.out.println(playerMove + " Wins!");
 
 						} else {
-							if(playerMove == "White"){
+
+							if(playerMove.equals("White")){
+
 								playerMove = "Black";
 								playerColour = PieceColour.BLACK;
 							} else {
+
 								playerMove = "White";
 								playerColour = PieceColour.WHITE;
 							}
