@@ -19,12 +19,19 @@ public class Game {
 			int[] origin;
 			int[] dest;
 			in = console.readLine("------ " + playerMove + " move -------\n> Enter origin:\n");
+			if (in.equals("END")){
+				gameEnd = true;
+			}
 			if (checker.checkCoordinateValidity(in)){
 				origin = this.convertToIndex(in);
 				while (true){
 					in = console.readLine("------ " + playerMove + " move -------\n> Enter destination:\n");
+					if (in.equals("END")){
+						gameEnd = true;
+					}
 					if (checker.checkCoordinateValidity(in)){
 						dest = this.convertToIndex(in);
+
 						break;
 					} else {
 						System.out.println("--------------------------\nInvalid move");
